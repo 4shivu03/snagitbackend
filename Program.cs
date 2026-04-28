@@ -27,10 +27,17 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000","https://snagitfront-dxzbovzcu-shivams-projects-f9ea60ca.vercel.app/")
-                  .AllowAnyHeader()
-                  .AllowAnyMethod()
-                  .AllowCredentials();
+            // policy.WithOrigins("http://localhost:3000")
+            //       .AllowAnyHeader()
+            //       .AllowAnyMethod()
+            //       .AllowCredentials();
+            policy.SetIsOriginAllowed(origin =>
+    origin.StartsWith("https://snagitfront-") &&
+    origin.EndsWith(".vercel.app")
+)
+.AllowAnyHeader()
+.AllowAnyMethod()
+.AllowCredentials();
         });
 });
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

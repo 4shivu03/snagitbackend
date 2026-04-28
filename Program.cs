@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000")
+            policy.WithOrigins("http://localhost:3000","https://snagitfront-dxzbovzcu-shivams-projects-f9ea60ca.vercel.app/")
                   .AllowAnyHeader()
                   .AllowAnyMethod()
                   .AllowCredentials();

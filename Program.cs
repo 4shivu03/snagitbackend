@@ -90,17 +90,9 @@ catch (Exception ex)
     Console.WriteLine("Migration failed: " + ex.Message);
 }
 }
-app.MapGet("/", () => "API running 🚀");
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-if (!app.Environment.IsDevelopment())
-{
-    app.UseHttpsRedirection();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+app.UseHttpsRedirection();
 app.UseCors("AllowFrontend");
 app.UseAuthentication();
 app.UseAuthorization();
